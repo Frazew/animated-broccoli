@@ -1,0 +1,84 @@
+\DeclareOptionBeamer{compress}{\beamer@compresstrue}
+\ProcessOptionsBeamer
+
+\mode<presentation>
+
+\useoutertheme[footline=authortitle]{miniframes}
+\useinnertheme{circles}
+\usecolortheme{whale}
+\usecolortheme{orchid}
+
+\RequirePackage{svgcolor}
+
+% Color configuration
+\definecolor{background}{HTML}{282828}
+\definecolor{foreground}{HTML}{EDDBB2}
+\definecolor{whitee}{HTML}{A89984}
+\definecolor{redd}{HTML}{FB4934}
+\definecolor{yelloww}{HTML}{FABD2F}
+\definecolor{greenn}{HTML}{98971A}
+
+\setbeamercolor*{background canvas}{bg=background}
+\setbeamercolor*{normal text}{fg=whitee}
+\setbeamercolor*{alerted text}{fg=redd}
+\setbeamercolor*{structure}{fg=yelloww}
+\setbeamercolor*{title}{fg=yelloww}
+\setbeamercolor*{itemize item}{fg=foreground}
+\setbeamercolor*{enumerate item}{fg=foreground}
+\setbeamercolor{titlelike}{parent=structure}
+\setbeamercolor{frametitle}{fg=greenn}
+
+
+\setbeamertemplate{sections/subsections in toc}[sections numbered]{}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{qed symbol}{}
+
+
+% Font configuration
+\usepackage{fontspec}
+\setsansfont[ExternalLocation=fonts/]{Hack-Regular.ttf}
+
+% Stucture configuration
+\setbeamertemplate{sections/subsections in toc}[sections numbered]{}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{qed symbol}{}
+
+
+\newbox\datbox
+\newbox\datboxx
+
+\usepackage{listings}
+\usepackage{graphicx}
+
+\setbeamertemplate{frametitle}{\boldmath\insertframetitle}
+\setbeamertemplate{headline}{
+  \setbox\datbox\hbox{/\insertsection\ifx\insertsubsection\@empty\else/\insertsubsection\fi}
+    \setbox\datboxx\hbox{\raisebox{-.3\height}{\resizebox{35mm}{10mm}{\lstinputlisting{minet.txt}}}}
+  \ht\datbox=1mm\dp\datbox=0mm
+  \ht\datboxx=1mm\dp\datboxx=0mm
+  \vspace{5.2mm}
+  \hspace{2mm}\noindent\box\datbox\hfill\box\datboxx\hspace{2mm}
+  \vspace{1.3mm}
+
+}
+\setbeamertemplate{footline}{
+  \setbox\datbox\hbox{[\insertauthor @\insertinstitute$\colon$\char"7E /\inserttitle]\$}
+  \setbox\datboxx\hbox{[\insertframenumber/\inserttotalframenumber]}
+  \ht\datbox=1mm\dp\datbox=0mm
+  \ht\datboxx=1mm\dp\datboxx=0mm
+  \vspace{5.2mm}
+  \hspace{2mm}\noindent\box\datbox\hfill\box\datboxx\hspace{2mm}
+  \vspace{1.3mm}
+}
+\setbeamertemplate{title page}{
+  \renewcommand\thefootnote{\fnsymbol{footnote}}
+  \setcounter{footnote}{1} % \dagger
+  \noindent {\usebeamerfont{title}\$ \usebeamercolor[fg]{title}\bfseries\boldmath\inserttitle}
+  \ifx\insertsubtitle\@empty\else\\>\hbox{}>\hbox{}> {\usebeamerfont{title}\usebeamercolor[fg]{title}\insertsubtitle}\fi~\\[1em]
+  > \insertauthor\ \ifx\insertinstitute\@empty\else(\insertinstitute)\fi\\
+  > \insertdate
+  \renewcommand\thefootnote{\arabic{footnote}}
+  \setcounter{footnote}{0}
+}
+\mode
+<all>
