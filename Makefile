@@ -1,12 +1,10 @@
-NAME=$(shell basename `pwd`)
-IN=$(NAME).md
-OUT=$(NAME).pdf
+.PHONY=all clean
 LANG=fr-FR
 THEME=custom
 
-all:
-	@echo Building pdf with pandoc
-	pandoc --pdf-engine xelatex -t beamer -V theme:$(THEME) -V lang:$(LANG) $(IN) -o $(OUT)
-
+all: $(basename $(wildcard *.md))
 clean:
-	rm -Rf $(NAME).sty
+	rm -rf *.pdf
+
+%: %.md
+	pandoc --pdf-engine xelatex -t beamer -V theme:$(THEME) -V lang:$(LANG) $^ -o $@.pdf
