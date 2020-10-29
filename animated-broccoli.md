@@ -22,11 +22,28 @@ Test 2
 
 ### Slide 1
 
-Test
+First word
+:    A nice definition
+
+Second word
+
+:    An even nicer definition
+
+. . .
+
+![Logo](images/minet.png){height=40%}
 
 ### Slide 2
 
 Test 2
+
+:::incremental
+
+- First point
+- Second point
+- Third point
+
+:::
 
 # Second section
 

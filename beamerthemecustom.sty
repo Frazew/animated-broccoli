@@ -36,7 +36,12 @@
 
 % Font configuration
 \usepackage{fontspec}
-\setsansfont[ExternalLocation=fonts/]{Hack-Regular.ttf}
+\setsansfont[ExternalLocation=fonts/,
+              UprightFont=*-Regular,
+              BoldFont=*-Bold,
+              ItalicFont=*-Italic,
+              BoldItalicFont=*-BoldItalic]{Hack}
+
 
 % Stucture configuration
 \setbeamertemplate{sections/subsections in toc}[sections numbered]{}
@@ -47,17 +52,13 @@
 \newbox\datbox
 \newbox\datboxx
 
-\usepackage{listings}
-\usepackage{graphicx}
-
+\logo{\includegraphics[height=1.3cm]{images/minet.png}\vspace{220pt}}
 \setbeamertemplate{frametitle}{\boldmath\insertframetitle}
 \setbeamertemplate{headline}{
   \setbox\datbox\hbox{/\insertsection\ifx\insertsubsection\@empty\else/\insertsubsection\fi}
-    \setbox\datboxx\hbox{\raisebox{-.3\height}{\resizebox{35mm}{10mm}{\lstinputlisting{minet.txt}}}}
   \ht\datbox=1mm\dp\datbox=0mm
-  \ht\datboxx=1mm\dp\datboxx=0mm
   \vspace{5.2mm}
-  \hspace{2mm}\noindent\box\datbox\hfill\box\datboxx\hspace{2mm}
+  \hspace{2mm}\noindent\box\datbox\hspace{2mm}
   \vspace{1.3mm}
 
 }

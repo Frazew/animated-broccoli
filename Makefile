@@ -7,4 +7,4 @@ clean:
 	rm -rf *.pdf
 
 %: %.md
-	pandoc --pdf-engine xelatex -t beamer -V theme:$(THEME) -V lang:$(LANG) $^ -o $@.pdf
+	pandoc --pdf-engine xelatex -st beamer -V theme:$(THEME) -V lang:$(LANG) $^ -o $@.pdf
